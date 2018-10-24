@@ -1,0 +1,4 @@
+Station:0,0,0;
+NumberOfTargets:3;
+NumberOfSteps:8;
+TimeOfTakt:0.0001;
