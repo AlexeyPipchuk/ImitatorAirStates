@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-CResultOfScan::CResultOfScan(int x, int y, int z, float time)
+CResultOfScan::CResultOfScan(float x, float y, float z, float time)
 {
 	this->x = x;
 	this->y = y;

@@ -13,11 +13,12 @@ public:
 	CVector Coordinate; // m
 	CVector Speed; // m/c
 	CVector Acceleration; // m/c
-	int beta; // азимут
-	int epsilon; // угол места
-	void Update(float time, CVector station);
-	void SetNoise();
-private: 
+	float beta; // азимут
+	float epsilon; // угол места
+	float distance; // расстояние от станции до цели
+	void Update(const float& time, const CVector& station);
+	void SendToVoi(const float& time);
+private:
 };
 
 #endif AirObject_H

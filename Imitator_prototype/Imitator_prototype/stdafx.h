@@ -13,6 +13,7 @@
 #include "AirObject.h"
 #include "ResultOfScan.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 

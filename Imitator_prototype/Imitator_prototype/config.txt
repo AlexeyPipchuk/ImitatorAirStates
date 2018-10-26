@@ -1,4 +1,6 @@
-Station:0,0,0;
-NumberOfTargets:3;
-NumberOfSteps:8;
-TimeOfTakt:0.0001;
+Station:0,0,0
+NumberOfTargets:3
+NumberOfSteps:450
+TimeOfTakt:0.001
+widthOfAzimuth:90
+heightOfPlaceCorner:5

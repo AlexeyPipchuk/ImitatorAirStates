@@ -13,11 +13,13 @@ private:
 	CAirObject* targets;
 	CVector StationCoordinates;
 	int NumberOfTargets;
-	int NumberOfSteps;
+	int NumberOfSteps;  // длительность модели в тактах
 	float CurrentTime;
-	float TimeOfTakt;
-	int widthOfAzimuth;
-	int heightOfPlaceCorner;
+	float TimeOfTakt; // в секундах
+	int widthOfAzimuth; // в градусах
+	int heightOfPlaceCorner; // в градусах
+
+	void GetConfig();
 };
 
 #endif Imitator_H

@@ -3,11 +3,11 @@
 
 class CResultOfScan {
 public:
-	CResultOfScan(int x,int y ,int z, float time);
+	CResultOfScan(float x, float y, float z, float time);
 	~CResultOfScan();
-	int x;
-	int y;
-	int z;
+	float x;
+	float y;
+	float z;
 	float detectionTime;
 private:
 };
