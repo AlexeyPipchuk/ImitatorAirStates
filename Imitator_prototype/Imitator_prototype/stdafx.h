@@ -14,6 +14,7 @@
 #include "ResultOfScan.h"
 #include <iostream>
 #include <string>
+#include "ReferenceState.h"
 using namespace std;
 
 

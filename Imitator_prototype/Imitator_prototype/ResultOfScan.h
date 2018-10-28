@@ -3,12 +3,11 @@
 
 class CResultOfScan {
 public:
-	CResultOfScan(float x, float y, float z, float time);
+	CResultOfScan(CVector coordinates, float vr, float time);
 	~CResultOfScan();
-	float x;
-	float y;
-	float z;
+	CVector Coordinates;
 	float detectionTime;
+	float Vr;  // радиальная скорость 
 private:
 };
 #endif ResultOfScan_H

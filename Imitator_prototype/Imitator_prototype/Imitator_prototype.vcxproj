@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="AirObject.h" />
     <ClInclude Include="Imitator.h" />
+    <ClInclude Include="ReferenceState.h" />
     <ClInclude Include="ResultOfScan.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -90,6 +91,7 @@
     <ClCompile Include="AirObject.cpp" />
     <ClCompile Include="Imitator.cpp" />
     <ClCompile Include="Imitator_prototype.cpp" />
+    <ClCompile Include="ReferenceState.cpp" />
     <ClCompile Include="ResultOfScan.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

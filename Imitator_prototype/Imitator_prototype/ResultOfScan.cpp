@@ -1,10 +1,11 @@
 #include "stdafx.h"
 
-CResultOfScan::CResultOfScan(float x, float y, float z, float time)
+CResultOfScan::CResultOfScan(CVector coordinates, float vr, float time)
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
+	this->Coordinates.x = coordinates.x;
+	this->Coordinates.y = coordinates.y;
+	this->Coordinates.z = coordinates.z;
+	this->Vr = vr;
 	detectionTime = time;
 }
 

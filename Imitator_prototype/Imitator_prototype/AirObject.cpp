@@ -53,6 +53,12 @@ CAirObject::~CAirObject() {
 
 }
 
+float CAirObject::epsilonSKO;
+float CAirObject::betaSKO;
+float CAirObject::distanceSKO;
+float CAirObject::accelerationSKO;
+int CAirObject::typeOfEmulation;
+
 void CAirObject::Update(const float& time, const CVector& station) {
 	// time - время такта
 	// пересчет координат
@@ -82,7 +88,10 @@ void CAirObject::Update(const float& time, const CVector& station) {
 }
 
 void CAirObject::SendToVoi(const float& time)
-{ // наложение шумов на азимут/угол места/дистанцию
+{ 
+	cout << "\nTarget found!\nCoordinates without noise " << Coordinate.x << " / " << Coordinate.y << " / "
+		<< Coordinate.z << "      after " << time << "sec";
+	// наложение шумов на азимут/угол места/дистанцию
 	default_random_engine generator;
 	normal_distribution<float> distribution(0, 0.01); // нормальное распределение (матожидание 0, среднеквадратическое отклонение)
 	float ep = this->epsilon + distribution(generator);
@@ -91,16 +100,19 @@ void CAirObject::SendToVoi(const float& time)
 	normal_distribution<float> distribution3(0, 7.0);
 	float di = this->distance + distribution3(generator);
   // вычисление координат с учетом шума
-	float yWithNoise = ep * di;   // через синус
-	float katet = sqrt(pow(di, 2) - pow(yWithNoise, 2));  // теорема пифагора
-	float zWithNoise = bt * katet; // через синус
-	float xWithNoise = sqrt(pow(katet, 2) - pow(zWithNoise, 2));  // теорема пифагора
-
-	cout << "\nepsilonWithout " << epsilon << "   beta " << beta << "    distance " << distance << endl;
-	cout << "\nep " << ep << "   bt " << bt << "    di " << di << endl;
-	cout << "\nXwith noise = " << xWithNoise << "   y = " << yWithNoise << "  z = " << zWithNoise << " \n";
+	CVector coordinates; float re = betaSKO;
+	coordinates.y = ep * di;   // через синус 
+	float katet = sqrt(pow(di, 2) - pow(coordinates.y, 2));  // теорема пифагора
+	coordinates.z = bt * katet; // через синус
+	coordinates.x = sqrt(pow(katet, 2) - pow(coordinates.z, 2));  // теорема пифагора
 	
-	CResultOfScan* package = new CResultOfScan(xWithNoise, yWithNoise, zWithNoise, time); // формирование пакета данных для передачи на ВОИ
+	CResultOfScan* package = new CResultOfScan(coordinates, 0, time); // формирование пакета данных для передачи на ВОИ
 	// здесь нужно отправить пакет на ВОИ
 	delete package;
+}
+
+void CAirObject::SendToDb(const int& Nt, const float& time)
+{
+	CReferenceState* package = new CReferenceState(Coordinate, Speed, Acceleration, time, Nt); // формирование пакета данных для передачи в базу данных
+	// здесь нужно отправить пкет в базу данных
 }
