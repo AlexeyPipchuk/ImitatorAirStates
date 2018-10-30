@@ -8,7 +8,6 @@ CImitator::CImitator()
 
 	this->CurrentTime = 0;
 	this->targets = new CAirObject[NumberOfTargets];
-	//this->TimeOfTakt = 0.0001;
 }
 
 CImitator::~CImitator()
@@ -28,7 +27,8 @@ void CImitator::Scan()
 			NumberOfSteps--;
 			for (int k = 0; k < this->NumberOfTargets; k++) {
 				targets[k].Update(this->TimeOfTakt, this->StationCoordinates);  // пересчет параметров воздушных целей
-				if (i == floor(targets[k].epsilon * 180 / 3.14159265 + .5) && y == floor(targets[k].beta * 180 / 3.14159265 +.5)) { // если луч и цель совпали
+				// если луч и цель совпали
+				if (i == floor(targets[k].Get_epsion() * 180 / 3.14159265 + .5) && y == floor(targets[k].Get_beta() * 180 / 3.14159265 +.5)) {
 					targets[k].SendToDb(k, CurrentTime);    // отправка эталонных данных о цели в базу данных
 					targets[k].SendToVoi(CurrentTime);    // отправка цели на ВОИ с наложением шумов
 				}
@@ -37,6 +37,7 @@ void CImitator::Scan()
 	}
 	if (NumberOfSteps > 0) // если время моделирования не истекло, открываем новый период обзора
 	{
+		cout << "\n/////////////////////////////////////////////////////////////////////////////////////";
 		this->Scan();
 	}
 }
@@ -62,6 +63,7 @@ void CImitator::GetConfig()  // парсер конфиг файла
 			case 1:
 				config.getline(str, ';');
 				NumberOfTargets = atoi(str);
+				cout << "NumberOfTargets : " << NumberOfTargets << "\n";
 				break;
 			case 2:
 				config.getline(str, ';');

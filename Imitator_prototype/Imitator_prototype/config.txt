@@ -1,11 +1,11 @@
 Station:0,0,0
 NumberOfTargets:3
-NumberOfSteps:450
+NumberOfSteps:9000
 TimeOfTakt:0.001
 widthOfAzimuth:90
 heightOfPlaceCorner:5
 SKOforEpsilon:0.01
 SKOforBeta:0.03
 SKOforDistance:7
-SKOforAcceleration:1
+SKOforAcceleration:0.0001
 TypeOfSimulation:1

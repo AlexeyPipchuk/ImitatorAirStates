@@ -3,13 +3,13 @@
 
 class CReferenceState {
 public:
-	CReferenceState(CVector coordinate, CVector speed, CVector acceleration, float time, int Nt);
+	CReferenceState(CVector coordinate, CVector speed, CVector acceleration, double time, int Nt);
 	~CReferenceState();
 
 	CVector Coordinate;
 	CVector Speed;
 	CVector Acceleration;
-	float detectionTime;
+	double detectionTime;
 	int Ntarget;
 private:
 };

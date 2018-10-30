@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-CReferenceState::CReferenceState(CVector coordinate, CVector speed, CVector acceleration, float time, int Nt)
+CReferenceState::CReferenceState(CVector coordinate, CVector speed, CVector acceleration, double time, int Nt)
 {
 	Coordinate.x = coordinate.x;
 	Coordinate.y = coordinate.y;

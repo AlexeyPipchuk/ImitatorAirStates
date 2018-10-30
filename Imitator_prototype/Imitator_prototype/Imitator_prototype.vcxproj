@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="AirObject.h" />
     <ClInclude Include="Imitator.h" />
+    <ClInclude Include="Raid.h" />
     <ClInclude Include="ReferenceState.h" />
     <ClInclude Include="ResultOfScan.h" />
     <ClInclude Include="stdafx.h" />

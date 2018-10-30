@@ -14,8 +14,8 @@ private:
 	CVector StationCoordinates;
 	int NumberOfTargets;
 	int NumberOfSteps;  // длительность модели в тактах
-	float CurrentTime;
-	float TimeOfTakt; // в секундах
+	double CurrentTime;
+	double TimeOfTakt; // в секундах
 	int widthOfAzimuth; // в градусах
 	int heightOfPlaceCorner; // в градусах
 

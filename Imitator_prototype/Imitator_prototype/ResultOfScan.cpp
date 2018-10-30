@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-CResultOfScan::CResultOfScan(CVector coordinates, float vr, float time)
+CResultOfScan::CResultOfScan(CVector coordinates, double vr, double time)
 {
 	this->Coordinates.x = coordinates.x;
 	this->Coordinates.y = coordinates.y;
