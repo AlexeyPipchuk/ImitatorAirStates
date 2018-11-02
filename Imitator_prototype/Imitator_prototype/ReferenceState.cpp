@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-CReferenceState::CReferenceState(CVector coordinate, CVector speed, CVector acceleration, double time, int Nt)
+CReferenceState::CReferenceState(CVector coordinate, CVector speed, CVector acceleration, double time, int numTarget)
 {
 	Coordinate.x = coordinate.x;
 	Coordinate.y = coordinate.y;
@@ -11,8 +11,8 @@ CReferenceState::CReferenceState(CVector coordinate, CVector speed, CVector acce
 	Acceleration.x = acceleration.x;
 	Acceleration.y = acceleration.y;
 	Acceleration.z = acceleration.z;
-	detectionTime = time;
-	Ntarget = Nt;
+	DetectionTime = time;
+	NumberOfTarget = numTarget;
 }
 
 CReferenceState::~CReferenceState()

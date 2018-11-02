@@ -6,8 +6,10 @@ CResultOfScan::CResultOfScan(CVector coordinates, double vr, double time)
 	this->Coordinates.y = coordinates.y;
 	this->Coordinates.z = coordinates.z;
 	this->Vr = vr;
-	detectionTime = time;
+	DetectionTime = time;
 }
 
 CResultOfScan::~CResultOfScan()
-{}
+{
+
+}

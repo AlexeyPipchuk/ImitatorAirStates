@@ -1,3 +1,8 @@
+// Дата: 02.11.18
+// Автор: Пипчук А.А.
+// Описание: описывается класс воздушного объекта и его вложенный класс состояний ускорения, созданный для возможности определять
+// изменения траекторий полета в определенные моменты времени
+
 #ifndef AirObject_H
 #define AirObject_H
 
@@ -6,34 +11,45 @@ struct CVector {
 };
 
 class CAirObject {
-public:
-	CAirObject();
-	~CAirObject();
-	
-	static double epsilonSKO; // sko(ско) - среднеквадратическое отклонение, требуется нам для определения нормального распределения
-	static double betaSKO;
-	static double distanceSKO;
-	static double accelerationSKO;
-	static int typeOfEmulation;
 
-	void Update(const double& time, const CVector& station);
-	void SendToVoi(const double& time);
-	void SendToDb(const int& Nt, const double& time);
-	double inline Get_beta()
+public:
+
+	class CAccelerationState  // параметры ускорения и время, в которое их необходимо применить
 	{
-		return beta;
-	}
-	double inline Get_epsion()
-	{
-		return epsilon;
-	}
-private:
-	double* Normal_distribution;
-	double beta; // азимут
-	double epsilon; // угол места
-	double distance; // расстояние от станции до цели
+	public:
+		CVector Acceleration;
+		double time;
+
+		CAccelerationState();
+		~CAccelerationState();
+	private:
+	};
+
+	CAccelerationState* AccelerationStates; // массив переменных состояний ускорения
+	int AccelerationStatesLen; // длина массива выше 
 	CVector Coordinate; // m
 	CVector Speed; // m/c
 	CVector Acceleration; // m/c
+	static double epsilonSko; // sko(ско) - среднеквадратическое отклонение, требуется нам для определения нормального распределения
+	static double betaSko;
+	static double distanceSko;
+	static double accelerationSko;
+	static int typeOfEmulation; // выбор конфигурации налета
+
+	CAirObject();
+	~CAirObject();
+
+	void Update(const double time, const double curTime, const CVector& station); // обновление параметров воздушного объекта
+	void SendToVoi(const double curTime); // отправка данных на вторичную обработку
+	void SendToDb(const int numTarget, const double curTime); // отправка данных в базу данных
+	double GetBeta() { return beta; }
+	double GetEpsion() { return epsilon; }
+
+private:
+    double* normalDistributionArray; // будем выбирать из него случайное значение для шумов
+	double beta; // азимут
+	double epsilon; // угол места
+	double distance; // расстояние от станции до цели
+	int aChangesCounter; // показывает, какое состояние ускорения на данный момент, если имитатор работает по конфигурации с переменным ускорением
 };
 #endif AirObject_H
