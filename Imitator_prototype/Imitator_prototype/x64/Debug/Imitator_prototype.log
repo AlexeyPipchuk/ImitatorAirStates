@@ -1,8 +1,16 @@
-﻿Сборка начата 05.11.2018 16:00:31.
+﻿Сборка начата 06.11.2018 0:00:21.
      1>Проект "C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\Imitator_prototype\Imitator_prototype.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt Imitator.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt AirObject.cpp Imitator.cpp Imitator_prototype.cpp ReferenceState.cpp ResultOfScan.cpp
          Imitator.cpp
+         AirObject.cpp
+         Создание кода...
+         Пропуск... (изменения не обнаружены)
+         ResultOfScan.cpp
+         ReferenceState.cpp
+         Imitator_prototype.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.lib" /MACHINE:X64 x64\Debug\AirObject.obj
          x64\Debug\Imitator.obj
@@ -15,4 +23,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:00.25
+Затраченное время: 00:00:01.12

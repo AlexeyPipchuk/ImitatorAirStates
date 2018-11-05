@@ -39,8 +39,8 @@ CImitator::~CImitator()
 
 void CImitator::Scan()
 {  
-	for (int i = 0; i < widthOfAzimuth; i++) {  // пробегаем всю область обзора в двойном цикле
-		for (int y = 0; y < heightOfPlaceCorner; y++) {
+	for (int i = minBeta; i < maxBeta; i++) {  // пробегаем всю область обзора в двойном цикле
+		for (int y = minEpsilon; y < maxEpsilon; y++) {
 			if( numberOfSteps == 0 ) {
 				break;
 			}
@@ -48,7 +48,7 @@ void CImitator::Scan()
 			numberOfSteps--;
 			for (int k = 0; k < this->numberOfTargets; k++) {
 				targets[k].Update(this->timeOfTakt, this->currentTime, this->stationCoordinates);  // пересчет параметров воздушных целей
-				if (returnPoissonRandom(10) > 21) {  // какие параметры?
+				if (returnPoissonRandom(10) > 21) {
 					cout << "\nFake target sended\n";
 					int fx = returnUniformRandom(100000);
 					int fy = returnUniformRandom(10000);	
@@ -89,8 +89,8 @@ int CImitator::returnPoissonRandom(int lambda)
 void CImitator::getConfig()  // парсер конфиг файла
 {
 	ifstream config("config.txt");
-	int i = 5; // количество параметров для имитатора
-	int j = 10; // количество параметров
+	int i = 7; // количество параметров для имитатора
+	int j = 12; // количество параметров
 	int k = 0;
 	char* str = new char[25];
 	while( k < i ) {
@@ -115,11 +115,19 @@ void CImitator::getConfig()  // парсер конфиг файла
 				break;
 			case 3:
 				config.getline(str, '\n');
-				widthOfAzimuth = atoi(str);
+				maxBeta = atoi(str);
 				break;
 			case 4:
 				config.getline(str, '\n');
-				heightOfPlaceCorner = atoi(str);
+				minBeta = atoi(str);
+				break;
+			case 5:
+				config.getline(str, '\n');
+				maxEpsilon = atoi(str);
+				break;
+			case 6:
+				config.getline(str, '\n');
+				minEpsilon = atoi(str);
 				break;
 			}
 		}
@@ -129,23 +137,23 @@ void CImitator::getConfig()  // парсер конфиг файла
 	while( k < j ) {
 		config.getline(str, 20, ':');
 		switch( k ) {
-		case 5:
+		case 7:
 			config.getline(str, '\n');
 			CAirObject::epsilonSko = stod(str);
 			break;
-		case 6:
+		case 8:
 			config.getline(str, '\n');
 			CAirObject::betaSko = stod(str);
 			break;
-		case 7:
+		case 9:
 			config.getline(str, '\n');
 			CAirObject::distanceSko = stod(str);
 			break;
-		case 8:
+		case 10:
 			config.getline(str, '\n');
 			CAirObject::accelerationSko = stod(str);
 			break;
-		case 9:
+		case 11:
 			config.getline(str, '\n');
 			CAirObject::typeOfEmulation = atoi(str);
 			break;

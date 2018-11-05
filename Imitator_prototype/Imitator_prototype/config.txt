@@ -1,8 +1,10 @@
 Station:0,0,0
 numberOfSteps:90000
 timeOfTakt:0.001
-widthOfAzimuth:90
-heightOfPlaceCorner:10
+maxBeta:90
+minBeta:0
+maxEpsilon:10
+minEpsilon:0
 SKOforEpsilon:0.01
 SKOforBeta:0.03
 SKOforDistance:7

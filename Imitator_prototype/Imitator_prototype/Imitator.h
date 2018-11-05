@@ -8,17 +8,6 @@
 
 #include "AirObject.h"
 #include <vector>
-
-#include <stdio.h>
-#include <tchar.h>
-#include "Imitator.h"
-#include "AirObject.h"
-#include "ResultOfScan.h"
-#include <iostream>
-#include <string>
-#include <conio.h>
-#include <ctime>
-#include <cstdlib>
 #include <random> 
 
 class CImitator {
@@ -33,8 +22,10 @@ private:
 	int numberOfSteps;  // длительность модели в тактах
 	double currentTime;
 	double timeOfTakt; // в секундах
-	int widthOfAzimuth; // в градусах
-	int heightOfPlaceCorner; // в градусах 
+	int minBeta; // в градусах
+	int maxBeta; 
+	int minEpsilon; // в градусах
+	int maxEpsilon;
 	std::mt19937 eqGenerator;
 	std::mt19937 poGenerator; // генератор вероятности для определеиня ложной засветки
 

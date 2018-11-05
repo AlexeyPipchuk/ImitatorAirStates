@@ -6,6 +6,8 @@
 #ifndef AirObject_H
 #define AirObject_H
 
+#include <random> 
+
 struct CVector {
 	double x, y, z;
 };
@@ -47,10 +49,12 @@ public:
 	double GetEpsion() { return epsilon; }
 
 private:
-    double* normalDistributionArray; // будем выбирать из него случайное значение для шумов
+	std::mt19937 gaussGenerator; // нормальное распределение. будем выбирать из него случайное значение для шумов
 	double beta; // азимут
 	double epsilon; // угол места
 	double distance; // расстояние от станции до цели
 	int aChangesCounter; // показывает, какое состояние ускорения на данный момент, если имитатор работает по конфигурации с переменным ускорением
+
+	double returnGaussRandom(double sko);
 };
 #endif AirObject_H

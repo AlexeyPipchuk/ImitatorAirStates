@@ -5,16 +5,6 @@
 
 CAirObject::CAirObject() 
 {
-	if( accelerationSko != 0 ) { // если накладываются шумы на ускорение, определяем их нормальным распределением
-		normalDistributionArray = new double[1000];
-		std::default_random_engine generator;
-		std::normal_distribution<double> distribution(0, accelerationSko);
-		for( int i = 0; i < 1000; i++ ) {
-			normalDistributionArray[i] = distribution(generator);
-		}
-	} else {
-		normalDistributionArray = nullptr;
-	}
 	this->AccelerationStates = nullptr;
 	this->beta = 0;
 	this->epsilon = 0;
@@ -36,13 +26,12 @@ CAirObject::CAirObject(int fx, int fy, int fz, const CVector& station)
 	katet2 = Coordinate.z - station.z;
 	double projection = sqrt(pow(katet, 2) + pow(katet2, 2)); // проекция distance на плоскость XZ
 	beta = katet2 / projection; // пересчет угла места
+	std::random_device device;
+	gaussGenerator.seed(device());
 }
 
 CAirObject::~CAirObject() 
 {
-	if( normalDistributionArray != nullptr ) {
-		delete[] normalDistributionArray;
-	}
 	if (AccelerationStates != nullptr) {
 		delete[] AccelerationStates;
 	}
@@ -70,9 +59,9 @@ void CAirObject::Update(const double time, const double curTime, const CVector& 
 	Speed.z += Acceleration.z * time;
 	// влиянеие шумов на ускорения если они есть
 	if( accelerationSko != 0 ) {
-		Acceleration.x += normalDistributionArray[rand() % 1000];
-		Acceleration.z += normalDistributionArray[rand() % 1000];
-		Acceleration.y += normalDistributionArray[rand() % 1000];
+		Acceleration.x += returnGaussRandom(accelerationSko);
+		Acceleration.z += returnGaussRandom(accelerationSko);
+		Acceleration.y += returnGaussRandom(accelerationSko);
 	}
 	// пересчет азимута
 	distance = sqrt(pow(Coordinate.x - station.x, 2) + pow(Coordinate.y - station.y, 2) + pow(Coordinate.z - station.z, 2)); // расстояние до цели
@@ -98,13 +87,9 @@ void CAirObject::Update(const double time, const double curTime, const CVector& 
 void CAirObject::SendToVoi(const double curTime)
 { 
 	// наложение шумов на азимут/угол места/дистанцию
-	default_random_engine generator;
-	normal_distribution<double> distribution(0, epsilonSko); // нормальное распределение (матожидание 0, среднеквадратическое отклонение)
-	double ep = this->epsilon + distribution(generator);
-	normal_distribution<double> distribution2(0, betaSko);
-	double bt = this->beta + distribution2(generator);
-	normal_distribution<double> distribution3(0, distanceSko);
-	double di = this->distance + distribution3(generator);
+	double ep = this->epsilon + returnGaussRandom(epsilonSko);
+	double bt = this->beta + returnGaussRandom(betaSko);
+	double di = this->distance + returnGaussRandom(distanceSko);
   // вычисление координат с учетом шума
 	CVector coordinates; double re = betaSko;
 	coordinates.y = ep * di;   // через синус 
@@ -125,6 +110,13 @@ void CAirObject::SendToDb(const int numTarget, const double curTime)
 
 	CReferenceState* package = new CReferenceState(Coordinate, Speed, Acceleration, curTime, numTarget); // формирование пакета данных для передачи в базу данных
 	// здесь нужно отправить пкет в базу данных
+	delete package;
+}
+
+double CAirObject::returnGaussRandom(double sko)
+{
+	std::normal_distribution<double> range(0, sko);
+	return range(gaussGenerator);
 }
 
 CAirObject::CAccelerationState::CAccelerationState()
