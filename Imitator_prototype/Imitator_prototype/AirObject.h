@@ -37,6 +37,7 @@ public:
 	static int typeOfEmulation; // выбор конфигурации налета
 
 	CAirObject();
+	CAirObject(int fx, int fy, int fz, const CVector& station);
 	~CAirObject();
 
 	void Update(const double time, const double curTime, const CVector& station); // обновление параметров воздушного объекта

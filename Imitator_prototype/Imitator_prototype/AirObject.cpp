@@ -22,7 +22,24 @@ CAirObject::CAirObject()
 	this->aChangesCounter = 0;
 }
 
-CAirObject::~CAirObject() {
+CAirObject::CAirObject(int fx, int fy, int fz, const CVector& station)
+{
+	Coordinate.x = fx;
+	Coordinate.y = fy;
+	Coordinate.z = fz;
+	distance = sqrt(pow(Coordinate.x - station.x, 2) + pow(Coordinate.y - station.y, 2) + pow(Coordinate.z - station.z, 2)); // расстояние до цели
+	double katet = sqrt(pow(Coordinate.z - station.z, 2) + pow(Coordinate.x - station.x, 2)); // система координат, где Y это Z, X это Y, а Z это X
+	double katet2 = sqrt(pow(distance, 2) - pow(katet, 2));
+	epsilon = katet2 / distance; // пересчет азимута
+	// пересчет угла места
+	katet = Coordinate.x - station.x;
+	katet2 = Coordinate.z - station.z;
+	double projection = sqrt(pow(katet, 2) + pow(katet2, 2)); // проекция distance на плоскость XZ
+	beta = katet2 / projection; // пересчет угла места
+}
+
+CAirObject::~CAirObject() 
+{
 	if( normalDistributionArray != nullptr ) {
 		delete[] normalDistributionArray;
 	}
@@ -37,7 +54,8 @@ double CAirObject::distanceSko;
 double CAirObject::accelerationSko;
 int CAirObject::typeOfEmulation; 
 
-void CAirObject::Update(const double time, const double curTime, const CVector& station) {                // time - время такта
+void CAirObject::Update(const double time, const double curTime, const CVector& station) // time - время такта
+{                
 	// пересчет координат
 	Coordinate.x += Speed.x * time + 0.5 * Acceleration.x * pow(time, 2);
 	Coordinate.z += Speed.z * time + 0.5 * Acceleration.z * pow(time, 2);

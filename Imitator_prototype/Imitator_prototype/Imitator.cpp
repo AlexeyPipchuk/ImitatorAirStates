@@ -1,9 +1,14 @@
 #include "stdafx.h"
 #include <fstream>
 #include <cstddef>
+#include <random> 
 
 CImitator::CImitator()
 {	
+	std::random_device device;
+	eqGenerator.seed(device());
+	poGenerator.seed(device());
+
 	getConfig();
 
 	this->currentTime = 0;
@@ -33,18 +38,30 @@ CImitator::~CImitator()
 }
 
 void CImitator::Scan()
-{
-	for( int i = 0; i < heightOfPlaceCorner; i++ ) {  // пробегаем всю область обзора в двойном цикле
-		for( int y = 0; y < widthOfAzimuth; y++ ) {
+{  
+	for (int i = 0; i < widthOfAzimuth; i++) {  // пробегаем всю область обзора в двойном цикле
+		for (int y = 0; y < heightOfPlaceCorner; y++) {
 			if( numberOfSteps == 0 ) {
-				break; // придумать, как сделать сохранение состояния 
+				break;
 			}
 			this->currentTime += timeOfTakt;
 			numberOfSteps--;
-			for( int k = 0; k < this->numberOfTargets; k++ ) {
+			for (int k = 0; k < this->numberOfTargets; k++) {
 				targets[k].Update(this->timeOfTakt, this->currentTime, this->stationCoordinates);  // пересчет параметров воздушных целей
+				if (returnPoissonRandom(10) > 21) {  // какие параметры?
+					cout << "\nFake target sended\n";
+					int fx = returnUniformRandom(100000);
+					int fy = returnUniformRandom(10000);	
+					int fz = returnUniformRandom(100000);
+					CAirObject* fake = new CAirObject(fx, fy, fz, stationCoordinates);
+					fake->SendToVoi(currentTime);
+				}
 				// если луч и цель совпали
-				if( i == floor(targets[k].GetEpsion() * 180 / 3.14159265 + .5) && y == floor(targets[k].GetBeta() * 180 / 3.14159265 +.5) ) {
+				if( y == floor(targets[k].GetEpsion() * 180 / 3.14159265 + .5) && i == floor(targets[k].GetBeta() * 180 / 3.14159265 +.5) ) {
+					if (returnUniformRandom(10) == 10) { // измерить не удалось с вероятностью 0.1
+						cout << "\nMeasurement missed";
+						continue;
+					}
 					targets[k].SendToDb(k, currentTime);    // отправка эталонных данных о цели в базу данных
 					targets[k].SendToVoi(currentTime);    // отправка цели на ВОИ с наложением шумов
 				}
@@ -55,6 +72,18 @@ void CImitator::Scan()
 		cout << "\n/////////////////////////////////////////////////////////////////////////////////////";
 		this->Scan();
 	}
+}
+
+int CImitator::returnUniformRandom(int max)
+{
+	std::uniform_int_distribution<int> range(0, max);
+	return range(eqGenerator);
+}
+
+int CImitator::returnPoissonRandom(int lambda)
+{
+	std::poisson_distribution<int> range(lambda);
+	return range(poGenerator);
 }
 
 void CImitator::getConfig()  // парсер конфиг файла
