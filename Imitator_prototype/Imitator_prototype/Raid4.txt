@@ -1,7 +1,7 @@
 numberOfTargets:1
 
 VectorCoordinates:100000,3000,0
-VectorSpeeds:0,10,890
+VectorSpeeds:0,5,245
 VectorAccelerations:0,0,0
 
 

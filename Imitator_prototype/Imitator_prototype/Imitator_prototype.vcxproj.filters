@@ -36,9 +36,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
@@ -52,6 +49,18 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="ReferenceState.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="VOI.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Noize.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Saver.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,6 +81,15 @@
       <Filter>Заголовочные файлы\Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="ReferenceState.cpp">
+      <Filter>Заголовочные файлы\Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="VOI.cpp">
+      <Filter>Заголовочные файлы\Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Noize.cpp">
+      <Filter>Заголовочные файлы\Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Saver.cpp">
       <Filter>Заголовочные файлы\Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

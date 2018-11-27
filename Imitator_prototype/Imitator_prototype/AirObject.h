@@ -36,6 +36,7 @@ public:
 	static double betaSko;
 	static double distanceSko;
 	static double accelerationSko;
+	static double radialSko;
 	static int typeOfEmulation; // выбор конфигурации налета
 
 	CAirObject();
@@ -43,7 +44,7 @@ public:
 	~CAirObject();
 
 	void Update(const double time, const double curTime, const CVector& station); // обновление параметров воздушного объекта
-	void SendToVoi(const double curTime); // отправка данных на вторичную обработку
+	void SendToVoi(const double curTime, const bool fake = false); // отправка данных на вторичную обработку
 	void SendToDb(const int numTarget, const double curTime); // отправка данных в базу данных
 	double GetBeta() { return beta; }
 	double GetEpsion() { return epsilon; }
@@ -53,6 +54,8 @@ private:
 	double beta; // азимут
 	double epsilon; // угол места
 	double distance; // расстояние от станции до цели
+	double radialSpeed; // радиальная скорость 
+	double** CovMat; // ковариационная матрица
 	int aChangesCounter; // показывает, какое состояние ускорения на данный момент, если имитатор работает по конфигурации с переменным ускорением
 
 	double returnGaussRandom(double sko);

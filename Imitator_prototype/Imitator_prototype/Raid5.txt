@@ -1,14 +1,14 @@
 numberOfTargets:1
 
 VectorCoordinates:50000,3000,20000
-VectorSpeeds:0,0,900
+VectorSpeeds:0,0,250
 VectorAccelerations:0,0,0
 NumberOfStatesForAcceleration:4
 Time:5
 VectorAccelerations:-5,5,-10
 Time:25
 VectorAccelerations:5,5,10
-Time:40
+Time:40.564674
 VectorAccelerations:0,-5,0
 Time:75
 VectorAccelerations:0,0,0

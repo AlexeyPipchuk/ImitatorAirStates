@@ -12,11 +12,15 @@
 #include "Imitator.h"
 #include "AirObject.h"
 #include "ResultOfScan.h"
+#include "Noize.h"
+#include "VOI.h"
 #include <iostream>
 #include <string>
+#include "Saver.h"
 #include "ReferenceState.h"
-//#include "aspm\inc\aspmassert.h"
+
 using namespace std;
+
 
 
 

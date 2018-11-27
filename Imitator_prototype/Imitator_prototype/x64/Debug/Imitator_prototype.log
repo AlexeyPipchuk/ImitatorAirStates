@@ -1,26 +1,38 @@
-﻿Сборка начата 06.11.2018 0:00:21.
-     1>Проект "C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\Imitator_prototype\Imitator_prototype.vcxproj" в узле 2 (целевые объекты Build).
+﻿Сборка начата 27.11.2018 15:51:25.
+     1>Проект "D:\Новая папка\ImitatorAirStates\Imitator_prototype\Imitator_prototype\Imitator_prototype.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\MATLAB\R2018b\extern\include" /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
          stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt AirObject.cpp Imitator.cpp Imitator_prototype.cpp ReferenceState.cpp ResultOfScan.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\MATLAB\R2018b\extern\include" /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\Imitator_prototype.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt AirObject.cpp Imitator.cpp Imitator_prototype.cpp Noize.cpp ReferenceState.cpp ResultOfScan.cpp Saver.cpp VOI.cpp
+         VOI.cpp
+         Saver.cpp
+     1>Saver.cpp(248): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+     1>Saver.cpp(355): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+     1>Saver.cpp(418): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+     1>Saver.cpp(481): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+     1>Saver.cpp(730): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+     1>Saver.cpp(776): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+         ResultOfScan.cpp
+         ReferenceState.cpp
+         Noize.cpp
+         Imitator_prototype.cpp
+     1>Imitator_prototype.cpp(8): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
          Imitator.cpp
          AirObject.cpp
          Создание кода...
-         Пропуск... (изменения не обнаружены)
-         ResultOfScan.cpp
-         ReferenceState.cpp
-         Imitator_prototype.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.lib" /MACHINE:X64 x64\Debug\AirObject.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Новая папка\ImitatorAirStates\Imitator_prototype\x64\Debug\Imitator_prototype.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\MATLAB\R2018b\extern\lib\win64\microsoft" libeng.lib libmx.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Новая папка\ImitatorAirStates\Imitator_prototype\x64\Debug\Imitator_prototype.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Новая папка\ImitatorAirStates\Imitator_prototype\x64\Debug\Imitator_prototype.lib" /MACHINE:X64 x64\Debug\AirObject.obj
          x64\Debug\Imitator.obj
          x64\Debug\Imitator_prototype.obj
+         x64\Debug\Noize.obj
          x64\Debug\ReferenceState.obj
          x64\Debug\ResultOfScan.obj
+         x64\Debug\Saver.obj
          x64\Debug\stdafx.obj
-         Imitator_prototype.vcxproj -> C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\x64\Debug\Imitator_prototype.exe
-     1>Сборка проекта "C:\Users\Alexey\documents\visual studio 2013\Projects\Imitator_prototype\Imitator_prototype\Imitator_prototype.vcxproj" завершена (целевые объекты Build).
+         x64\Debug\VOI.obj
+         Imitator_prototype.vcxproj -> D:\Новая папка\ImitatorAirStates\Imitator_prototype\x64\Debug\Imitator_prototype.exe
+     1>Сборка проекта "D:\Новая папка\ImitatorAirStates\Imitator_prototype\Imitator_prototype\Imitator_prototype.vcxproj" завершена (целевые объекты Build).
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.12
+Затраченное время: 00:00:06.44

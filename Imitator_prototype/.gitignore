@@ -1,0 +1,11 @@
+/armadillo
+*/Debug
+/Debug
+Imitator_prototype/Debug/*
+Imitator_prototype/Release/*
+Imitator_prototype/x64/*
+/lib_win64
+/mkl
+*/Release
+*/x64
+in
